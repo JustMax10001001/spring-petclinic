@@ -44,6 +44,13 @@
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <goals>install</goals>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <configuration>
@@ -71,4 +78,9 @@
         </plugins>
     </build>
 
+    <scm>
+        <developerConnection>
+            scm:git://github.com/JustMax10001001/spring-petclinic.git
+        </developerConnection>
+    </scm>
 </project>
