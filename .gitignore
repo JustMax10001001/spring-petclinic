@@ -35,4 +35,4 @@ build/
 ### Release pom backups ###
 /petclinic-data/pom.xml.releaseBackup
 /petclinic-web/pom.xml.releaseBackup
-./pom.xml.releaseBackup
+/pom.xml.releaseBackup
