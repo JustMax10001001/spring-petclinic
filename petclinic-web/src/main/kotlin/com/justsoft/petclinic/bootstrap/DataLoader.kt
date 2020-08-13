@@ -5,18 +5,16 @@ import com.justsoft.petclinic.models.Vet
 import com.justsoft.petclinic.services.OwnerService
 import com.justsoft.petclinic.services.PetService
 import com.justsoft.petclinic.services.VetService
-import com.justsoft.petclinic.services.map.OwnerServiceMap
-import com.justsoft.petclinic.services.map.PetServiceMap
-import com.justsoft.petclinic.services.map.VetServiceMap
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 
 @Component
-class DataLoader : CommandLineRunner {
+class DataLoader(
+        private val ownerService: OwnerService,
+        private val petService: PetService,
+        private val vetService: VetService
+) : CommandLineRunner {
 
-    private val ownerService: OwnerService = OwnerServiceMap()
-    private val petService: PetService = PetServiceMap()
-    private val vetService: VetService = VetServiceMap()
 
     override fun run(vararg args: String?) {
         ownerService.save(
