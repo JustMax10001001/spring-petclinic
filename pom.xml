@@ -14,7 +14,7 @@
     </parent>
     <groupId>com.justsoft</groupId>
     <artifactId>com.justsoft.petclinic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>com.justsoft.petclinic</name>
     <description>Demo project for Spring Boot</description>
 
@@ -88,6 +88,6 @@
         <developerConnection>
             scm:git:https://github.com/JustMax10001001/spring-petclinic.git
         </developerConnection>
-      <tag>com.justsoft.petclinic-0.0.1</tag>
+      <tag>com.justsoft.petclinic-0.0.1-RELEASE</tag>
   </scm>
 </project>
