@@ -1,9 +1,7 @@
 package com.justsoft.petclinic
 
-import com.justsoft.petclinic.models.Owner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-
 
 @SpringBootApplication
 class PetClinicApplication
