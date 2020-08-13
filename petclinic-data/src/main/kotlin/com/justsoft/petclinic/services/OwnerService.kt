@@ -2,13 +2,7 @@ package com.justsoft.petclinic.services
 
 import com.justsoft.petclinic.models.Owner
 
-interface OwnerService {
+interface OwnerService: CrudService<Owner, Long> {
 
     fun findByLastName(lastName: String): Owner?
-
-    fun findById(id: Long): Owner?
-
-    fun save(owner: Owner)
-
-    fun findAll(): Set<Owner>
 }
