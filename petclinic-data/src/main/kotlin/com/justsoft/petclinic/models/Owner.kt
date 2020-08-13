@@ -1,6 +1,3 @@
 package com.justsoft.petclinic.models
 
-class Owner: Person() {
-
-
-}
+class Owner: Person()
