@@ -10,6 +10,4 @@ class PetClinicApplication
 
 fun main(args: Array<String>) {
     runApplication<PetClinicApplication>(*args)
-
-    //val owner = Owner()
 }
