@@ -7,5 +7,5 @@ import javax.persistence.Id
 open class BaseEntity(
         @Id
         @GeneratedValue
-        val id: Long? = null
+        var id: Long? = null
 ): Serializable
