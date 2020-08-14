@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <title th:text="'List of vets'">title</title>
 </head>
+
 <body>
     <h2>List of vets</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Vet's name</th>
+        </tr>
+        <tr th:each="vet: ${vets}">
+            <th th:text="${vet.id}"></th>
+            <th th:text="${vet.firstName} + ' ' + ${vet.lastName}"></th>
+        </tr>
+    </table>
 </body>
 </html>
