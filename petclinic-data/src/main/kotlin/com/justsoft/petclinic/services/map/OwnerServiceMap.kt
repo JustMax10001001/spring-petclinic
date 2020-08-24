@@ -1,6 +1,6 @@
 package com.justsoft.petclinic.services.map
 
-import com.justsoft.petclinic.models.Owner
+import com.justsoft.petclinic.models.people.Owner
 import com.justsoft.petclinic.services.OwnerService
 import org.springframework.context.annotation.Profile
 import org.springframework.stereotype.Service

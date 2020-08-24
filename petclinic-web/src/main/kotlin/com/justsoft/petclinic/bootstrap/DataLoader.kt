@@ -1,7 +1,7 @@
 package com.justsoft.petclinic.bootstrap
 
-import com.justsoft.petclinic.models.Owner
-import com.justsoft.petclinic.models.Vet
+import com.justsoft.petclinic.models.people.Owner
+import com.justsoft.petclinic.models.people.vet.Vet
 import com.justsoft.petclinic.services.OwnerService
 import com.justsoft.petclinic.services.PetService
 import com.justsoft.petclinic.services.VetService

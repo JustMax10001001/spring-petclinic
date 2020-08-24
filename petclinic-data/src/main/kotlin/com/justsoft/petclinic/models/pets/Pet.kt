@@ -1,5 +1,7 @@
-package com.justsoft.petclinic.models
+package com.justsoft.petclinic.models.pets
 
+import com.justsoft.petclinic.models.BaseEntity
+import com.justsoft.petclinic.models.people.Owner
 import java.time.LocalDate
 
 class Pet: BaseEntity() {
