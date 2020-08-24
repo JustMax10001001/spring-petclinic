@@ -31,8 +31,16 @@ class DataLoader(
         val ownerMichael = createOwner1()
         val ownerFiona = createOwner2()
 
-        ownerMichael.pets.add(Pet("Woofer", dog, LocalDate.now(), ownerMichael))
-        ownerMichael.pets.add(Pet("Smelly boi" ,racoon, LocalDate.now(), ownerMichael))
+        ownerMichael.pets.apply {
+            add(Pet("Woofer", dog, LocalDate.now(), ownerMichael))
+            add(Pet("Smelly boi", racoon, LocalDate.now(), ownerMichael))
+        }
+
+        ownerFiona.pets.apply {
+            add(Pet("Barsik", cat, LocalDate.now(), ownerFiona))
+            add(Pet("Murzik", cat, LocalDate.now(), ownerFiona))
+            add(Pet("Tofu", cat, LocalDate.now(), ownerFiona))
+        }
 
         saveOwners(ownerMichael, ownerFiona)
         println("Loaded owners.")
@@ -42,6 +50,7 @@ class DataLoader(
         saveVets(vetPick, vetSam)
         println("Loaded vets.")
     }
+
 
     private fun savePets(vararg pets: Pet) {
         pets.forEach {
