@@ -5,18 +5,20 @@
     <title th:text="'List of owners'">title</title>
 </head>
 <body>
-    <h2>List of owners</h2>
-    <table id="vets" class="table table-striped">
-        <tr>
-            <th style="width: 10%">ID</th>
-            <th style="width: 70%">Owner's name</th>
-            <th style="width: 20%">Pets count</th>
-        </tr>
-        <tr th:each="owner: ${owners}">
-            <th th:text="${owner.id}"></th>
-            <th th:text="${owner.firstName} + ' ' + ${owner.lastName}"></th>
-            <th>0</th>
-        </tr>
-    </table>
+<h2>List of owners</h2>
+<table id="vets" class="table table-striped">
+    <thead>
+    <tr>
+        <th style="width: 7.5%">ID</th>
+        <th style="width: 72.5%">Owner's name</th>
+        <th style="width: 20%">Pets count</th>
+    </tr>
+    </thead>
+    <tr th:each="owner: ${owners}">
+        <th th:text="${owner.id}"></th>
+        <th th:text="${owner.firstName} + ' ' + ${owner.lastName}"></th>
+        <th>0</th>
+    </tr>
+</table>
 </body>
 </html>
