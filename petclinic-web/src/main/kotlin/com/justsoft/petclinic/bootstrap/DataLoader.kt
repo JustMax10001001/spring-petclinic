@@ -2,6 +2,7 @@ package com.justsoft.petclinic.bootstrap
 
 import com.justsoft.petclinic.models.people.Owner
 import com.justsoft.petclinic.models.people.Vet
+import com.justsoft.petclinic.models.people.VetSpecialty
 import com.justsoft.petclinic.models.pets.Pet
 import com.justsoft.petclinic.models.pets.PetType
 import com.justsoft.petclinic.services.OwnerService
@@ -22,11 +23,16 @@ class DataLoader(
 
 
     override fun run(vararg args: String?) {
+        val count = vetService.findAll().size
+
+        if (count == 0)         // don't add mock data when using persistent storage
+            loadData()
+    }
+
+    private fun loadData() {
         val dog = PetType("Dog")
         val cat = PetType("Cat")
         val racoon = PetType("Racoon")
-        //savePetTypes(dog, cat, racoon)
-        println("Loaded pet types")
 
         val ownerMichael = createOwner1()
         val ownerFiona = createOwner2()
@@ -45,8 +51,20 @@ class DataLoader(
         saveOwners(ownerMichael, ownerFiona)
         println("Loaded owners.")
 
+        val specialtyRadiology = VetSpecialty("Radiology")
+        val specialtyDentistry = VetSpecialty("Dentistry")
+        val specialtySurgery = VetSpecialty("Surgery")
+
         val vetPick = createVet1()
         val vetSam = createVet2()
+        vetPick.specialties.apply {
+            add(specialtyRadiology)
+            add(specialtySurgery)
+        }
+        vetSam.specialties.apply {
+            add(specialtySurgery)
+            add(specialtyDentistry)
+        }
         saveVets(vetPick, vetSam)
         println("Loaded vets.")
     }
