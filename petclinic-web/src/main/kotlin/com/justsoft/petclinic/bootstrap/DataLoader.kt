@@ -18,31 +18,37 @@ class DataLoader(
 
     override fun run(vararg args: String?) {
         ownerService.save(
-                Owner().apply {
-                    firstName = "Michael"
-                    lastName = "Weston"
-                }
+                Owner(
+                        firstName = "Michael",
+                        lastName = "Weston",
+                        address = "Kulparkivska",
+                        city = "Lviv",
+                        telephone = "0223352"
+                )
         )
         ownerService.save(
-                Owner().apply {
-                    firstName = "Fiona"
-                    lastName = "Shreck"
-                }
+                Owner(
+                        firstName = "Fiona",
+                        lastName = "Shrek",
+                        address = "Uzhgorodska",
+                        city = "Lviv",
+                        telephone = "0223351"
+                )
         )
 
         println("Loaded owners.")
 
         vetService.save(
-                Vet().apply {
-                    firstName = "Sam"
-                    lastName = "Axe"
-                }
+                Vet(
+                        firstName = "Sam",
+                        lastName = "Axe"
+                )
         )
         vetService.save(
-                Vet().apply {
-                    firstName = "Sam"
-                    lastName = "Hatchet"
-                }
+                Vet(
+                        firstName = "Sam",
+                        lastName = "Hatchet"
+                )
         )
 
         println("Loaded vets.")
