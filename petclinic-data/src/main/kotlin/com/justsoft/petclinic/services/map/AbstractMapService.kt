@@ -1,8 +1,6 @@
 package com.justsoft.petclinic.services.map
 
 import com.justsoft.petclinic.models.BaseEntity
-import kotlin.collections.HashMap
-import kotlin.collections.HashSet
 
 abstract class AbstractMapService<T : BaseEntity> {
 
@@ -12,7 +10,7 @@ abstract class AbstractMapService<T : BaseEntity> {
 
     fun findById(id: Long) = map[id]
 
-    fun save(anObject: T): T {
+    open fun save(anObject: T): T {
         if (anObject.id == null){
             anObject.id = getNextId()
         }
