@@ -3,6 +3,7 @@ package com.justsoft.petclinic.controllers
 import com.justsoft.petclinic.services.OwnerService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.ui.set
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
@@ -13,8 +14,7 @@ class OwnersController(
 
     @RequestMapping("", "/", "/index", "/index.html")
     fun listOwners(model: Model): String {
-
-        model.addAttribute("owners", ownerService.findAll())
+        model["owners"] = ownerService.findAll()
 
         return "owners/index"
     }

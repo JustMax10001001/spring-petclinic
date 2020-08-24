@@ -3,6 +3,7 @@ package com.justsoft.petclinic.controllers
 import com.justsoft.petclinic.services.VetService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.ui.set
 import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
@@ -14,7 +15,7 @@ class VetController(
     @RequestMapping("", "/", "/index", "/index.html")
     fun listVets(model: Model): String {
 
-        model.addAttribute("vets", vetService.findAll())
+        model["vets"] = vetService.findAll()
 
         return "vets/index"
     }
