@@ -11,12 +11,17 @@
     <thead>
     <tr>
         <th style="width: 7.5%">ID</th>
-        <th style="width: 92.5%">Vet's name</th>
+        <th style="width: 22.5%">Vet's name</th>
+        <th style="width: 70%;">Specialties</th>
     </tr>
     </thead>
     <tr th:each="vet: ${vets}">
-        <th th:text="${vet.id}"></th>
-        <th th:text="${vet.firstName} + ' ' + ${vet.lastName}"></th>
+        <td th:text="${vet.id}"></td>
+        <td th:text="${vet.firstName} + ' ' + ${vet.lastName}"></td>
+        <td>
+            <span th:each="specialty: ${vet.specialties}" th:text="${specialty.specialtyName + ' '}"></span>
+            <span th:if="${vet.specialties.size() == 0}">none</span>
+        </td>
     </tr>
 </table>
 </body>

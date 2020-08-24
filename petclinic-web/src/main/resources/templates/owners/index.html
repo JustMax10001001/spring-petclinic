@@ -15,9 +15,9 @@
     </tr>
     </thead>
     <tr th:each="owner: ${owners}">
-        <th th:text="${owner.id}"></th>
-        <th th:text="${owner.firstName} + ' ' + ${owner.lastName}"></th>
-        <th>0</th>
+        <td th:text="${owner.id}"></td>
+        <td th:text="${owner.firstName} + ' ' + ${owner.lastName}"></td>
+        <td th:text="${owner.pets.size()}"></td>
     </tr>
 </table>
 </body>
