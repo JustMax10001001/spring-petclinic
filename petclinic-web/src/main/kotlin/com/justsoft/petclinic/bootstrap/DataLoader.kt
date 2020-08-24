@@ -57,6 +57,7 @@ class DataLoader(
 
         val vetPick = createVet1()
         val vetSam = createVet2()
+        val vetMax = Vet(firstName = "Max", lastName = "Tochot")
         vetPick.specialties.apply {
             add(specialtyRadiology)
             add(specialtySurgery)
@@ -65,7 +66,7 @@ class DataLoader(
             add(specialtySurgery)
             add(specialtyDentistry)
         }
-        saveVets(vetPick, vetSam)
+        saveVets(vetPick, vetSam, vetMax)
         println("Loaded vets.")
     }
 
