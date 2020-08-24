@@ -5,7 +5,7 @@ import com.justsoft.petclinic.models.pets.Pet
 class Owner(
         firstName: String,
         lastName: String,
-        val pets: Set<Pet> = HashSet(),
+        val pets: MutableSet<Pet> = HashSet(),
         var address: String,
         var city: String,
         var telephone: String
