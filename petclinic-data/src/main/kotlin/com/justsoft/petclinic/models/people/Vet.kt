@@ -4,8 +4,10 @@ import com.justsoft.petclinic.models.BaseEntity
 import java.io.Serializable
 
 class Vet(
-        var specialty: VetSpecialty
-) : Person()
+        val specialties: Set<VetSpecialty> = HashSet(),
+        firstName: String,
+        lastName: String,
+) : Person(firstName, lastName)
 
 class VetSpecialty(
         var specialtyName: String
