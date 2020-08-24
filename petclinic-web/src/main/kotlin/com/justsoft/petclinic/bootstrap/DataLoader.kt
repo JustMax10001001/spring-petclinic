@@ -10,6 +10,7 @@ import com.justsoft.petclinic.services.PetTypeService
 import com.justsoft.petclinic.services.VetService
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
+import java.time.LocalDate
 
 @Component
 class DataLoader(
@@ -24,11 +25,15 @@ class DataLoader(
         val dog = PetType("Dog")
         val cat = PetType("Cat")
         val racoon = PetType("Racoon")
-        savePetTypes(dog, cat, racoon)
+        //savePetTypes(dog, cat, racoon)
         println("Loaded pet types")
 
         val ownerMichael = createOwner1()
         val ownerFiona = createOwner2()
+
+        ownerMichael.pets.add(Pet("Woofer", dog, LocalDate.now(), ownerMichael))
+        ownerMichael.pets.add(Pet("Smelly boi" ,racoon, LocalDate.now(), ownerMichael))
+
         saveOwners(ownerMichael, ownerFiona)
         println("Loaded owners.")
 
