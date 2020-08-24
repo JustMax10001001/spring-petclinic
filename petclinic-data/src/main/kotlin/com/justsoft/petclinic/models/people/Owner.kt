@@ -1,3 +1,8 @@
 package com.justsoft.petclinic.models.people
 
-class Owner: Person()
+import com.justsoft.petclinic.models.pets.Pet
+
+class Owner: Person() {
+
+    val pets: Set<Pet> = HashSet()
+}
