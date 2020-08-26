@@ -3,8 +3,12 @@ package com.justsoft.petclinic.services.datajpa
 import com.justsoft.petclinic.models.people.Owner
 import com.justsoft.petclinic.repositories.OwnerRepository
 import com.justsoft.petclinic.services.OwnerService
+import org.springframework.context.annotation.Profile
 import org.springframework.data.repository.findByIdOrNull
+import org.springframework.stereotype.Service
 
+@Service
+@Profile("spring-data-jpa")
 class OwnerServiceJPA(
         private val ownerRepository: OwnerRepository
 ): OwnerService {
