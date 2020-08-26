@@ -1,6 +1,7 @@
 package com.justsoft.petclinic.models.people
 
 import com.justsoft.petclinic.models.pets.Pet
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.OneToMany
@@ -12,6 +13,6 @@ class Owner(
         @Column(nullable = false) var address: String,
         @Column(nullable = false) var city: String,
         @Column(nullable = false) var telephone: String,
-        @OneToMany
+        @OneToMany(cascade = [CascadeType.ALL])
         val pets: MutableSet<Pet> = HashSet()
-): Person(firstName, lastName)
+) : Person(firstName, lastName)
