@@ -7,11 +7,11 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-open class Pet(
-        @Column(nullable = false) open var name: String,
+class Pet(
+        @Column(nullable = false) var name: String,
         @OneToOne
-        open var petType: PetType,
-        @Column(nullable = false) open var birthDate: LocalDate,
-        @ManyToOne open var owner: Owner,
-        @OneToMany(mappedBy = "pet", cascade = [CascadeType.ALL]) open val visits: MutableSet<Visit> = HashSet()
+        var petType: PetType,
+        @Column(nullable = false) var birthDate: LocalDate,
+        @ManyToOne var owner: Owner,
+        @OneToMany(mappedBy = "pet", cascade = [CascadeType.ALL]) val visits: MutableSet<Visit> = HashSet()
 ) : BaseEntity()
