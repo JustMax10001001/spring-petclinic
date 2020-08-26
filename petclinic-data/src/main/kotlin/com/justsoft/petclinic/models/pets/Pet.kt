@@ -1,12 +1,10 @@
 package com.justsoft.petclinic.models.pets
 
 import com.justsoft.petclinic.models.BaseEntity
+import com.justsoft.petclinic.models.Visit
 import com.justsoft.petclinic.models.people.Owner
 import java.time.LocalDate
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
+import javax.persistence.*
 
 @Entity
 open class Pet(
@@ -15,4 +13,5 @@ open class Pet(
         var petType: PetType,
         @Column(nullable = false) var birthDate: LocalDate,
         @ManyToOne var owner: Owner,
+        @OneToMany(mappedBy = "pet", cascade = [CascadeType.ALL]) val visits: MutableSet<Visit> = HashSet()
 ) : BaseEntity()
