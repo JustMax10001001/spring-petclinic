@@ -5,4 +5,7 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface OwnerRepository: CrudRepository<Owner, Long>
+interface OwnerRepository: CrudRepository<Owner, Long> {
+
+    fun findOwnerByLastNameIgnoreCase(firstName: String): Owner?
+}
