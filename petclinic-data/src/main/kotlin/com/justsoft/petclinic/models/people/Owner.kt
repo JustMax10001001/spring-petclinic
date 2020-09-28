@@ -1,13 +1,14 @@
 package com.justsoft.petclinic.models.people
 
 import com.justsoft.petclinic.models.pets.Pet
-import com.justsoft.petclinic.models.pets.PetCreationContext
-import com.justsoft.petclinic.models.pets.PetList
-import com.justsoft.petclinic.models.pets.PetType
+import com.justsoft.petclinic.models.pets.PetListInitializationContext
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.OneToMany
+
+@DslMarker
+private annotation class OwnerDslMarker
 
 @Entity
 @OwnerDslMarker
@@ -24,9 +25,6 @@ class Owner(
         return "Owner(address='$address', city='$city', telephone='$telephone', pets=$pets)"
     }
 }
-
-@DslMarker
-annotation class OwnerDslMarker
 
 class OwnerCreationContext {
     var firstName: String = "firstname"
@@ -53,12 +51,3 @@ class OwnerCreationContext {
 inline fun owner(initializer: OwnerCreationContext.() -> Unit): Owner =
         OwnerCreationContext().also(initializer).build()
 
-class PetListInitializationContext(private val owner: Owner) {
-    private val petList: PetList = PetList()
-    fun pet(petType: PetType, initializer: PetCreationContext.() -> Unit) {
-        petList.add(PetCreationContext(petType).also(initializer).build(owner))
-    }
-
-    fun build(): ArrayList<Pet>
-        = petList
-}

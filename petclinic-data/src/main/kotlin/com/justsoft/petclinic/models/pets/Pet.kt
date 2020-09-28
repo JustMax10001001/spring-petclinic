@@ -7,7 +7,7 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @DslMarker
-annotation class PetDslMarker
+private annotation class PetDslMarker
 
 @Entity
 @PetDslMarker
@@ -34,7 +34,17 @@ class PetCreationContext(
 }
 
 @DslMarker
-annotation class PetListDslMarker
+private annotation class PetListDslMarker
 
-@PetDslMarker
-class PetList: ArrayList<Pet>()
+@PetListDslMarker
+private class PetList: ArrayList<Pet>()
+
+class PetListInitializationContext(val owner: Owner) {
+    val petList: ArrayList<Pet> = PetList()
+
+    inline fun pet(petType: PetType, initializer: PetCreationContext.() -> Unit) {
+        petList.add(PetCreationContext(petType).also(initializer).build(owner))
+    }
+
+    fun build(): ArrayList<Pet> = petList
+}
