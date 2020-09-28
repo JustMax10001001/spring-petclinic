@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentCaptor
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
@@ -18,8 +17,11 @@ import java.util.*
 @ExtendWith(MockitoExtension::class)
 internal class OwnerServiceJPATest {
 
-    @Mock private lateinit var ownerRepository: OwnerRepository
-    @Mock private lateinit var petRepository: PetRepository
+    @Mock
+    private lateinit var ownerRepository: OwnerRepository
+
+    @Mock
+    private lateinit var petRepository: PetRepository
 
     @InjectMocks
     private lateinit var ownerServiceJPA: OwnerServiceJPA
@@ -65,9 +67,10 @@ internal class OwnerServiceJPATest {
 
     @Test
     fun save() {
-        val ownerToSave = owner {  }
-        val ownerCaptor = ArgumentCaptor.forClass(Owner::class.java)
-        `when`(ownerRepository.save(ownerCaptor.capture())).thenReturn(ownerCaptor.value.apply { id = 5 })
+        val ownerToSave = owner { }
+        `when`(ownerRepository.save(any(Owner::class.java))).thenAnswer { invocation ->
+            invocation.getArgument(0, Owner::class.java).apply { id = 5 }
+        }
 
         val saved = ownerServiceJPA.save(ownerToSave)
 
