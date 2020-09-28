@@ -40,7 +40,6 @@ class DataLoader(
             city = "Lviv"
             telephone = "0223352"
 
-
             pet(dog) {
                 name = "Woofer"
                 birthDate = LocalDate.now()
