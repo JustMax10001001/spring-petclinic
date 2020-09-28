@@ -7,4 +7,8 @@ import javax.persistence.Entity
 @Entity
 class PetType(
         @Column(nullable = false)  var name: String,
-) : BaseEntity()
+) : BaseEntity() {
+    override fun toString(): String {
+        return "PetType(name='$name')"
+    }
+}
