@@ -55,11 +55,11 @@ class DataLoader(
         }
 
         val ownerFiona = owner {
-            firstName = "Michael"
-            lastName = "Weston"
-            address = "Kulparkivska"
+            firstName = "Fiona"
+            lastName = "Shrek"
+            address = "Uzhgorodska"
             city = "Lviv"
-            telephone = "0223352"
+            telephone = "0223351"
 
             pet(cat) {
                 name = "Barsik"
