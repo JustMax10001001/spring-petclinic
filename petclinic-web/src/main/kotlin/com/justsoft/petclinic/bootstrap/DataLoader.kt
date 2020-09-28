@@ -5,10 +5,7 @@ import com.justsoft.petclinic.models.people.Vet
 import com.justsoft.petclinic.models.people.VetSpecialty
 import com.justsoft.petclinic.models.pets.Pet
 import com.justsoft.petclinic.models.pets.PetType
-import com.justsoft.petclinic.services.OwnerService
-import com.justsoft.petclinic.services.PetService
-import com.justsoft.petclinic.services.PetTypeService
-import com.justsoft.petclinic.services.VetService
+import com.justsoft.petclinic.services.*
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -19,6 +16,8 @@ class DataLoader(
         private val petService: PetService,
         private val vetService: VetService,
         private val petTypeService: PetTypeService,
+        private val vetSpecialtyService: VetSpecialtyService,
+        private val visitService: VisitService,
 ) : CommandLineRunner {
 
 
@@ -33,6 +32,8 @@ class DataLoader(
         val dog = PetType("Dog")
         val cat = PetType("Cat")
         val racoon = PetType("Racoon")
+
+        savePetTypes(dog, cat, racoon)
 
         val ownerMichael = createOwner1()
         val ownerFiona = createOwner2()
@@ -54,6 +55,8 @@ class DataLoader(
         val specialtyRadiology = VetSpecialty("Radiology")
         val specialtyDentistry = VetSpecialty("Dentistry")
         val specialtySurgery = VetSpecialty("Surgery")
+
+        saveVetSpecialties(specialtyRadiology, specialtyDentistry, specialtySurgery)
 
         val vetPick = createVet1()
         val vetSam = createVet2()
@@ -92,6 +95,12 @@ class DataLoader(
     private fun saveOwners(vararg owners: Owner) {
         owners.forEach {
             ownerService.save(it)
+        }
+    }
+
+    private fun saveVetSpecialties(vararg vetSpecialty: VetSpecialty){
+        vetSpecialty.forEach {
+            vetSpecialtyService.save(it)
         }
     }
 
