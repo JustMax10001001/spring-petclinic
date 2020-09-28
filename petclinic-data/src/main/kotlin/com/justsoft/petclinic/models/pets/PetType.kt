@@ -9,6 +9,6 @@ class PetType(
         @Column(nullable = false)  var name: String,
 ) : BaseEntity() {
     override fun toString(): String {
-        return "PetType(name='$name')"
+        return "PetType(name='$name', id=$id)"
     }
 }

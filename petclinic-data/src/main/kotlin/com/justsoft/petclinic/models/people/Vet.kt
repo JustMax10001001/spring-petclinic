@@ -12,7 +12,11 @@ class Vet(
         @JoinTable(name = "VET_TO_SPECIALTY", joinColumns = [JoinColumn(name = "vet_id")],
                 inverseJoinColumns = [JoinColumn(name = "specialty_id")])
         val specialties: MutableSet<VetSpecialty> = HashSet(),
-) : Person(firstName, lastName)
+) : Person(firstName, lastName) {
+    override fun toString(): String {
+        return "Vet(name='$firstName $lastName', id=$id, specialties=$specialties)"
+    }
+}
 
 @Entity
 @Table(name = "SPECIALTY")
@@ -27,7 +31,7 @@ private annotation class VetDslMarker
 class VetCreationContext {
     var firstName: String = "firstname"
     var lastName: String = "lastname"
-    val specialties = mutableSetOf<VetSpecialty>()
+    private val specialties = mutableSetOf<VetSpecialty>()
 
     fun specialty(specialty: VetSpecialty) {
         specialties.add(specialty)

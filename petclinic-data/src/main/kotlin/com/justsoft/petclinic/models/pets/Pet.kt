@@ -17,7 +17,7 @@ class Pet(
         @OneToMany(mappedBy = "pet", cascade = [CascadeType.ALL]) val visits: MutableSet<Visit> = HashSet()
 ) : BaseEntity() {
     override fun toString(): String {
-        return "Pet(name='$name', petType=$petType, birthDate=$birthDate, owner=${owner.firstName} ${owner.lastName}, visits=$visits)"
+        return "Pet(name='$name', id=$id, petType=$petType, birthDate=$birthDate, owner=${owner.firstName} ${owner.lastName}, visits=$visits)"
     }
 }
 

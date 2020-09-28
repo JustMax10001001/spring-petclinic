@@ -22,7 +22,7 @@ class Owner(
         val pets: MutableSet<Pet> = HashSet()
 ) : Person(firstName, lastName) {
     override fun toString(): String {
-        return "Owner(address='$address', city='$city', telephone='$telephone', pets=$pets)"
+        return "Owner(name='$firstName $lastName', id=$id, address='$address', city='$city', telephone='$telephone', pets=$pets)"
     }
 }
 
