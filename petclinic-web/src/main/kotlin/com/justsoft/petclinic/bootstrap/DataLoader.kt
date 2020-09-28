@@ -1,9 +1,6 @@
 package com.justsoft.petclinic.bootstrap
 
-import com.justsoft.petclinic.models.people.Owner
-import com.justsoft.petclinic.models.people.Vet
-import com.justsoft.petclinic.models.people.VetSpecialty
-import com.justsoft.petclinic.models.people.owner
+import com.justsoft.petclinic.models.people.*
 import com.justsoft.petclinic.models.pets.Pet
 import com.justsoft.petclinic.models.pets.PetType
 import com.justsoft.petclinic.services.*
@@ -84,16 +81,23 @@ class DataLoader(
 
         saveVetSpecialties(specialtyRadiology, specialtyDentistry, specialtySurgery)
 
-        val vetPick = createVet1()
-        val vetSam = createVet2()
-        val vetMax = Vet(firstName = "Max", lastName = "Tochot")
-        vetPick.specialties.apply {
-            add(specialtyRadiology)
-            add(specialtySurgery)
+        val vetPick = vet {
+            firstName = "Pick"
+            lastName = "Axe"
+
+            specialty(specialtyRadiology)
+            specialty(specialtySurgery)
         }
-        vetSam.specialties.apply {
-            add(specialtySurgery)
-            add(specialtyDentistry)
+        val vetSam = vet {
+            firstName = "Sam"
+            lastName = "Hatchet"
+
+            specialty(specialtySurgery)
+            specialty(specialtyDentistry)
+        }
+        val vetMax = vet {
+            firstName = "Max"
+            lastName = "Tochot"
         }
         saveVets(vetPick, vetSam, vetMax)
         println("Loaded vets.")
@@ -129,30 +133,4 @@ class DataLoader(
             vetSpecialtyService.save(it)
         }
     }
-
-    private fun createVet1(): Vet = Vet(
-            firstName = "Pick",
-            lastName = "Axe",
-    )
-
-    private fun createVet2(): Vet = Vet(
-            firstName = "Sam",
-            lastName = "Hatchet",
-    )
-
-    private fun createOwner1(): Owner = Owner(
-            firstName = "Michael",
-            lastName = "Weston",
-            address = "Kulparkivska",
-            city = "Lviv",
-            telephone = "0223352"
-    )
-
-    private fun createOwner2(): Owner = Owner(
-            firstName = "Fiona",
-            lastName = "Shrek",
-            address = "Uzhgorodska",
-            city = "Lviv",
-            telephone = "0223351"
-    )
 }
