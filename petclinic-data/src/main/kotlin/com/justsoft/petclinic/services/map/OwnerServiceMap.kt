@@ -12,7 +12,7 @@ class OwnerServiceMap(
         val petService: PetService,
 ) : AbstractMapService<Owner>(), OwnerService {
     override fun findByLastName(lastName: String): Owner? {
-        TODO("Not yet implemented")
+        return findAll().find { owner -> owner.lastName.equals(lastName, true) }
     }
 
     override fun save(anObject: Owner): Owner {
