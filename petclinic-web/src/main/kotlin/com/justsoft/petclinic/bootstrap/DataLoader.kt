@@ -3,6 +3,7 @@ package com.justsoft.petclinic.bootstrap
 import com.justsoft.petclinic.models.people.Owner
 import com.justsoft.petclinic.models.people.Vet
 import com.justsoft.petclinic.models.people.VetSpecialty
+import com.justsoft.petclinic.models.people.owner
 import com.justsoft.petclinic.models.pets.Pet
 import com.justsoft.petclinic.models.pets.PetType
 import com.justsoft.petclinic.services.*
@@ -35,18 +36,43 @@ class DataLoader(
 
         savePetTypes(dog, cat, racoon)
 
-        val ownerMichael = createOwner1()
-        val ownerFiona = createOwner2()
+        val ownerMichael = owner {
+            firstName = "Michael"
+            lastName = "Weston"
+            address = "Kulparkivska"
+            city = "Lviv"
+            telephone = "0223352"
 
-        ownerMichael.pets.apply {
-            add(Pet("Woofer", dog, LocalDate.now(), ownerMichael))
-            add(Pet("Smelly boi", racoon, LocalDate.now(), ownerMichael))
+
+            pet(dog) {
+                name = "Woofer"
+                birthDate = LocalDate.now()
+            }
+            pet(racoon) {
+                name = "Smelly boi"
+                birthDate = LocalDate.now()
+            }
         }
 
-        ownerFiona.pets.apply {
-            add(Pet("Barsik", cat, LocalDate.now(), ownerFiona))
-            add(Pet("Murzik", cat, LocalDate.now(), ownerFiona))
-            add(Pet("Tofu", cat, LocalDate.now(), ownerFiona))
+        val ownerFiona = owner {
+            firstName = "Michael"
+            lastName = "Weston"
+            address = "Kulparkivska"
+            city = "Lviv"
+            telephone = "0223352"
+
+            pet(cat) {
+                name = "Barsik"
+                birthDate = LocalDate.now()
+            }
+            pet(cat) {
+                name = "Murzik"
+                birthDate = LocalDate.now()
+            }
+            pet(cat) {
+                name = "Tofu"
+                birthDate = LocalDate.now()
+            }
         }
 
         saveOwners(ownerMichael, ownerFiona)
@@ -98,7 +124,7 @@ class DataLoader(
         }
     }
 
-    private fun saveVetSpecialties(vararg vetSpecialty: VetSpecialty){
+    private fun saveVetSpecialties(vararg vetSpecialty: VetSpecialty) {
         vetSpecialty.forEach {
             vetSpecialtyService.save(it)
         }

@@ -3,14 +3,11 @@ package com.justsoft.petclinic.models.pets
 import com.justsoft.petclinic.models.BaseEntity
 import com.justsoft.petclinic.models.Visit
 import com.justsoft.petclinic.models.people.Owner
+import com.justsoft.petclinic.models.people.OwnerDslMarker
 import java.time.LocalDate
 import javax.persistence.*
 
-@DslMarker
-private annotation class PetDslMarker
-
 @Entity
-@PetDslMarker
 class Pet(
         @Column(nullable = false) var name: String,
         @OneToOne
@@ -24,6 +21,7 @@ class Pet(
     }
 }
 
+@OwnerDslMarker
 class PetCreationContext(
         var petType: PetType
 ) {
@@ -31,20 +29,4 @@ class PetCreationContext(
     var birthDate: LocalDate = LocalDate.MIN
 
     fun build(owner: Owner): Pet = Pet(name, petType, birthDate, owner)
-}
-
-@DslMarker
-private annotation class PetListDslMarker
-
-@PetListDslMarker
-private class PetList: ArrayList<Pet>()
-
-class PetListInitializationContext(val owner: Owner) {
-    val petList: ArrayList<Pet> = PetList()
-
-    inline fun pet(petType: PetType, initializer: PetCreationContext.() -> Unit) {
-        petList.add(PetCreationContext(petType).also(initializer).build(owner))
-    }
-
-    fun build(): ArrayList<Pet> = petList
 }

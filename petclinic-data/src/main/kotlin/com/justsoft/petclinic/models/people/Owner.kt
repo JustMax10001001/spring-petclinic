@@ -1,17 +1,17 @@
 package com.justsoft.petclinic.models.people
 
 import com.justsoft.petclinic.models.pets.Pet
-import com.justsoft.petclinic.models.pets.PetListInitializationContext
+import com.justsoft.petclinic.models.pets.PetCreationContext
+import com.justsoft.petclinic.models.pets.PetType
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.OneToMany
 
 @DslMarker
-private annotation class OwnerDslMarker
+annotation class OwnerDslMarker
 
 @Entity
-@OwnerDslMarker
 class Owner(
         firstName: String,
         lastName: String,
@@ -27,6 +27,7 @@ class Owner(
 }
 
 @Suppress("MemberVisibilityCanBePrivate")
+@OwnerDslMarker
 class OwnerCreationContext {
     var firstName: String = "firstname"
     var lastName: String = "lastname"
@@ -35,8 +36,8 @@ class OwnerCreationContext {
     var telephone: String = "telephone"
     private val preOwner = Owner(firstName, lastName, address, city, telephone)
 
-    fun pets(initializer: PetListInitializationContext.() -> Unit) {
-        preOwner.pets.addAll(PetListInitializationContext(preOwner).also(initializer).build())
+    fun pet(petType: PetType, initializer: PetCreationContext.() -> Unit) {
+        preOwner.pets.add(PetCreationContext(petType).also(initializer).build(preOwner))
     }
 
     fun build(): Owner {
