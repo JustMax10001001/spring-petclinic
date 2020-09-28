@@ -23,7 +23,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.4.0</kotlin.version>
+        <kotlin.version>1.4.10</kotlin.version>
+        <jaxb.version>2.3.0</jaxb.version>
     </properties>
 
     <dependencies>
@@ -38,6 +39,22 @@
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jdk8</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
         </dependency>
     </dependencies>
 
