@@ -26,6 +26,7 @@ class Owner(
     }
 }
 
+@Suppress("MemberVisibilityCanBePrivate")
 class OwnerCreationContext {
     var firstName: String = "firstname"
     var lastName: String = "lastname"
