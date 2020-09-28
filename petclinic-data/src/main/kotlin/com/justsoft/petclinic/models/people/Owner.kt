@@ -34,6 +34,7 @@ class OwnerCreationContext {
     var address: String = "address"
     var city: String = "city"
     var telephone: String = "telephone"
+    var id: Long? = null
     private val preOwner = Owner(firstName, lastName, address, city, telephone)
 
     fun pet(petType: PetType, initializer: PetCreationContext.() -> Unit) {
@@ -46,6 +47,7 @@ class OwnerCreationContext {
         preOwner.telephone = telephone
         preOwner.firstName = firstName
         preOwner.lastName = lastName
+        preOwner.id = id
         return preOwner
     }
 }
