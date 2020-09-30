@@ -18,4 +18,9 @@ class OwnerController(
 
         return "owners/index"
     }
+
+    @RequestMapping("/find")
+    fun findOwners(): String {
+        return "not_implemented"
+    }
 }
