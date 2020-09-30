@@ -29,6 +29,7 @@ jobs:
           path: target/surefire-reports
 
 workflows:
+  version: 2
   maven_test:
     jobs:
       - maven/test # checkout, build, test, and upload test results
